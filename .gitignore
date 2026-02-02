@@ -1,0 +1,20 @@
+# Build output
+x64/
+Debug/
+Release/
+
+# VS user files
+*.user
+.vs/
+
+# Build artifacts
+*.obj
+*.pdb
+*.ilk
+*.log
+*.tlog
+*.idb
+*.ipdb
+*.iobj
+*.pch
+*.ipch
