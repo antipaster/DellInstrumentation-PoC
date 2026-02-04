@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <cstring>
 #include <vector>
+#include <iostream>
 
 enum : DWORD {
     kSetCookie  = 0x9B0C1FC4,
@@ -27,6 +28,7 @@ static_assert(sizeof(SmiBuf) == 72, "");
 static HANDLE g_h;
 static uint64_t g_ck;
 static int g_hits;
+
 
 static bool dio(DWORD code, void* buf, DWORD sz) {
     DWORD ret;
@@ -190,9 +192,11 @@ static void check_physmem() {
     }
 }
 
+
 int main() {
     if (!init()) {
         printf("[-] err %u\n", GetLastError());
+        std::cin.get();
         return 1;
     }
 
@@ -207,6 +211,8 @@ int main() {
     check_physmem();
 
     printf("\n%d/5\n", g_hits);
+
+    std::cin.get();
     CloseHandle(g_h);
     return 0;
 }
